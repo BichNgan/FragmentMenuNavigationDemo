@@ -1,23 +1,31 @@
 package android.fragdemo;
 
+
+
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link DyFrag1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DyFrag1 extends android.app.Fragment {
+public class DyFrag1 extends Fragment {
 
     Button btnDy1;
+    EditText edtIp;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,6 +65,7 @@ public class DyFrag1 extends android.app.Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -65,10 +74,17 @@ public class DyFrag1 extends android.app.Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dy_frag1,container,false);
         btnDy1 = (Button) view.findViewById(R.id.btnDy1);
+        edtIp=(EditText)view.findViewById(R.id.edtIp);
         btnDy1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(),"DyFrag1 đang thực thi!", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity().getApplicationContext(),"DyFrag1 đang thực thi!", Toast.LENGTH_LONG).show();
+                String st = String.valueOf(edtIp.getText());
+                Bundle bundle = new Bundle();
+                bundle.putString("key1",st);
+                bundle.putString("key2","Hello");
+                FragmentManager fm=getParentFragmentManager();
+                fm.setFragmentResult("keyMain",bundle);
             }
         });
         return view;

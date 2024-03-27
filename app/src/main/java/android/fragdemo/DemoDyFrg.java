@@ -1,19 +1,24 @@
 package android.fragdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import java.util.ArrayList;
+
 public class DemoDyFrg extends AppCompatActivity {
 
     Button btnOpenDy1, btnOpenDy2;
     FrameLayout frameDyFrag;
+    ArrayList<String> arr=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,7 @@ public class DemoDyFrg extends AppCompatActivity {
     }
     public void loadFragment (Fragment fragment)
     {
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft= fm.beginTransaction();
         ft.replace(R.id.frameDyFrag,fragment);
         ft.commit();

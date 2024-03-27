@@ -12,13 +12,16 @@
         android:theme="@style/Theme.FragmentMenuNavigationDemo"
         tools:targetApi="31">
         <activity
+            android:name=".StaticFragDemo"
+            android:exported="false" />
+        <activity
             android:name=".DemoStaticFrg"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".StaticFragDemo"
+            android:name=".DemoStaticFragment_ST4"
             android:exported="false" />
         <activity
             android:name=".Bai3Fragment"
